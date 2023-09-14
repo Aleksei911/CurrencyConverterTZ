@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Title</title>
+</head>
+<body>
+<div data-aos="fade-right" class="col-span-12 lg:col-span-6 mt-4 xl:mt-20 space-y-6 px-4 aos-init aos-animate"
+     data-v-b444fb2c="">
+    <h2 class="mb-4 text-4xl font-semibold sm:pr-8 xl:pr-12" data-v-b444fb2c="">
+        Currency Converter
+    </h2>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="space-y-6 lg:pr-12" data-v-b444fb2c="">
+            <div class="flex items-center space-x-4" data-v-b444fb2c="">
+                <div class="lg:max-w-[336px] w-full flex items-center relative px-5 py-3 border border-[#0c66ee] rounded-xl">
+                    <span class="text-sm font-medium pr-5 py-3 text-[#0c66ee] border-r border-[#0c66ee]"> Amount </span>
+                    <input type="number" name="amount" value="{{ amount }}" placeholder="1.00"
+                           class="w-full text-lg font-medium text-right border-none ring-0 focus:outline-none focus:ring-0">
+                </div>
+                <div class="relative w-full max-w-[106px] sm:max-w-[159px]">
+                    <input type="text" name="cur1" placeholder="USD" value="{{ from_convert }}"
+                           class="w-full flex items-center justify-center space-x-1 relative sm:px-6 py-[1.35rem] border border-[#0c66ee] rounded-xl text-sm font-medium">
+                </div>
+
+                <div>
+                    <p>&#8658;</p>
+                </div>
+
+                <div class="relative w-full max-w-[106px] sm:max-w-[159px]">
+                    <input type="text" name="cur2" placeholder="RUB" value="{{ to_convert }}"
+                           class="w-full flex items-center justify-center space-x-1 relative sm:px-6 py-[1.35rem] border border-[#0c66ee] rounded-xl text-sm font-medium">
+                </div>
+            </div>
+            <button class="inline-flex items-center justify-center rounded-lg bg-blue-400 py-4 px-6 text-center text-base font-medium text-dark hover:text-primary hover:shadow-lg sm:px-10">
+                Convert
+            </button>
+        </div>
+    </form>
+    {% if to_convert and result %}
+    <div class="space-y-6 lg:pr-12" data-v-b444fb2c="">
+        <div class="flex items-center space-x-4" data-v-b444fb2c="">
+            <div class="lg:max-w-[336px] w-full flex items-center relative px-5 py-3 border border-[#0c66ee] rounded-xl">
+                <span class="text-sm font-medium pr-5 py-3 text-[#0c66ee] border-r border-[#0c66ee]"> Result </span>
+                <p class="w-full text-lg font-medium text-right border-none ring-0 focus:outline-none focus:ring-0">{{ result }}</p>
+            </div>
+            <div class="relative w-full max-w-[106px] sm:max-w-[159px]">
+                <p class="w-full flex items-center justify-center space-x-1 relative sm:px-6 py-[1.35rem] border border-[#0c66ee] rounded-xl text-sm font-medium">
+                    {{ to_convert }}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
